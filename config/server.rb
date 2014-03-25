@@ -10,5 +10,8 @@ environment :development do
   config[:raven_dsn] = nil
 end
 
-config[:http_requester] = ->(url) { EM::HttpRequest.new(url).get }
+[:redirect_for_no_url, :hostname, :host, :jslib_uri, :raven_dsn].each do |var|
+  config[var] = ENV[var.to_s] if ENV.key? var.to_s
+end
 
+config[:http_requester] = ->(url) { EM::HttpRequest.new(url).get }
