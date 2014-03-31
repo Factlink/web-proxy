@@ -7,6 +7,10 @@ class WebProxy < Goliath::API
     requested_url = req.params['url']
     return redirect_to_factlink if requested_url.nil?
 
+    if !requested_url.include?('//')
+      requested_url = 'http://' + requested_url
+    end
+
     url_validator = UrlValidator.new(requested_url)
     if url_validator.valid?
       requested_url = url_validator.normalized
