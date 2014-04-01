@@ -9,7 +9,7 @@ environment :development do
   config[:jslib_uri] = 'http://localhost:8000/lib/dist/factlink_loader.js?o=proxy'
 end
 
-[:redirect_for_no_url, :hostname, :host, :jslib_uri, :raven_dsn].each do |var|
+[:redirect_for_no_url, :hostname, :host, :jslib_uri].each do |var|
   config[var] = ENV[var.to_s] if ENV.key? var.to_s
 end
 
