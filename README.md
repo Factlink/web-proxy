@@ -22,8 +22,6 @@ dokku config:set proxy-production redirect_for_no_url='https://factlink.com' \
 
 Currently this is very much a Factlink product. We recognize this would be interesting to use for other parties as well, and are very open to extract out the general portions of the code, so we can share that.
 
-If you want to try out
-
 ## License
 
 Copyright (c) 2014 Factlink Inc and individual contributers, MIT license
