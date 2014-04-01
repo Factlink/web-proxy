@@ -8,9 +8,16 @@ Appsignal.start if Appsignal.active?
 class AppsignalGoliathListener
   include Goliath::Rack::AsyncMiddleware
 
+  def call(env)
+    super(env)
+  end
+
   def post_process(env, status, headers, body)
     if Appsignal.active? && env['rack.exception']
-      Appsignal.send_exception(env['rack.exception'])
+      Appsignal::Transaction.create(SecureRandom.uuid, env)
+      Appsignal::Transaction.current.add_exception(env['rack.exception'])
+      Appsignal::Transaction.current.complete!
+      Appsignal.agent.send_queue
     end
 
     [status, headers, body]
