@@ -3,7 +3,7 @@ require 'appsignal'
 Appsignal.config =
   Appsignal::Config.new(ENV['PWD'], Goliath.env, name: "Factlink Proxy")
 Appsignal.start_logger(nil)
-Appsignal.start
+Appsignal.start if Appsignal.active?
 
 class AppsignalGoliathListener
   include Goliath::Rack::AsyncMiddleware
