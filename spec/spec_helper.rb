@@ -6,6 +6,7 @@ SimpleCov.start
 
 require 'goliath/test_helper'
 require 'approvals'
+require 'hashie'
 require_relative './helper_methods'
 
 Goliath.env = :test
