@@ -2,4 +2,7 @@
 echo 'Setting up Factlink Web Proxy...'
 cd "$( dirname "${BASH_SOURCE[0]}" )"/..
 
-bundle install
+shasum --check Gemfile.lock.sha-cache || (
+  bundle -j4
+  shasum Gemfile.lock > Gemfile.lock.sha-cache
+)
