@@ -8,10 +8,10 @@ require_relative './lib/add_factlink_to_page'
 require_relative './lib/redirect_root_url'
 require_relative './lib/redirect_if_publisher'
 require_relative './lib/strip_publisher_script'
-require_relative './lib/raven_catcher'
+require_relative './lib/appsignal_goliath_listener'
 
 class Server < WebProxy
-  use RavenCatcher
+  use AppsignalGoliathListener
   use RedirectRootUrl
   use AddFactlinkToPage
   if Goliath.env == :production
