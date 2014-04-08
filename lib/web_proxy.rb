@@ -34,6 +34,12 @@ class WebProxy < Goliath::API
         { 'Location' => location },
         %Q(Redirecting to <a href="#{location}">#{location}</a>)
       ]
+    when 0
+      [
+        504,
+        {},
+        "This page is taking unusually long to load. You can try visiting the site without Factlink: <a href='#{location}'>#{location}</a>"
+      ]
     else
       fail "unknown status #{page.response_header.status}"
     end
