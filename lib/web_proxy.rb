@@ -38,7 +38,7 @@ class WebProxy < Goliath::API
       [
         504,
         {},
-        "This page is taking unusually long to load. You can try visiting the site without Factlink: <a href='#{location}'>#{location}</a>"
+        "This page is taking unusually long to load. You can try visiting the site without Factlink: <a href='#{requested_url}'>#{requested_url}</a>"
       ]
     else
       fail "unknown status #{page.response_header.status}"
