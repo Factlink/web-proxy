@@ -5,7 +5,6 @@ class WebProxy < Goliath::API
   def response(env)
     req = Rack::Request.new(env)
     requested_url = req.params['url']
-    return redirect_to_factlink if requested_url.nil?
 
     if !requested_url.include?('//')
       requested_url = 'http://' + requested_url
