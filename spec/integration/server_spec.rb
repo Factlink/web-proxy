@@ -18,7 +18,7 @@ describe Server do
       mock_http_requests(server)
       expect(http_requester)
         .to receive(:call)
-        .with(request_url)
+        .with(request_url, default_test_request_headers)
         .and_return mock_http_response(200, url_html)
 
       get_request(query: {url: request_url}) do |c|
@@ -34,7 +34,7 @@ describe Server do
       mock_http_requests(server)
       expect(http_requester)
         .to receive(:call)
-        .with(request_url)
+        .with(request_url, default_test_request_headers)
         .and_return mock_http_response(301, '', headers: {
           'Location' => 'http://www.example.org/baz?foo=bar'
         })
@@ -47,6 +47,32 @@ describe Server do
     end
   end
 
+  it "requests the proxied page with proxied user agent and language" do
+    request_url = 'http://www.example.org/foo?bar=baz'
+
+    url_html = <<-EOHTML.squeeze(' ').gsub(/^ /,'')
+      <!DOCTYPE html>
+      <html>
+      <title>Hoi</title>
+      <h1>yo</h1>
+    EOHTML
+
+    modified_headers = {
+      'Accept-Language' => 'i-klingon',
+      'User-Agent' => 'NCSA_Mosaic/2.0 '
+    }
+
+    with_api(Server) do |server|
+      mock_http_requests(server)
+      expect(http_requester)
+        .to receive(:call)
+        .with(request_url, modified_headers)
+        .and_return mock_http_response(200, url_html)
+
+      get_request(query: {url: request_url}, head: modified_headers) { |c| nil }
+    end
+
+  end
 
   it "redirects to a specified url when no url has been provided" do
     with_api(Server) do |server|

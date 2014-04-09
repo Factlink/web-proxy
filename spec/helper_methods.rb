@@ -11,4 +11,8 @@ module HelperMethods
       response: content,
     })
   end
+
+  def default_test_request_headers
+    {'User-Agent' => 'EventMachine HttpClient'}
+  end
 end

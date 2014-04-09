@@ -56,7 +56,19 @@ class WebProxy < Goliath::API
   end
 
   def retrieve_page(env, url)
-    env.config[:http_requester].call(url)
+    env.config[:http_requester].call(url, proxied_headers(env))
+  end
+
+  def proxied_headers(env)
+    [
+      'Accept-Language',
+      'User-Agent',
+    ].each_with_object({}) do |key, header|
+      # WARNING: conversion is strongly coupled with Goliaths implementation:
+      # https://github.com/postrank-labs/goliath/blob/v1.0.3/lib/goliath/request.rb#L77
+      rack_key = Goliath::Constants::HTTP_PREFIX + key.gsub('-','_').upcase
+      header[key] = env[rack_key] if env.key?(rack_key)
+    end
   end
 
   def invalid_request

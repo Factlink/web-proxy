@@ -23,7 +23,7 @@ describe RedirectIfPublisher do
       mock_http_requests(server)
       expect(http_requester)
         .to receive(:call)
-        .with(request_url)
+        .with(request_url, default_test_request_headers)
         .and_return mock_http_response(200, url_html)
 
       get_request(query: {url: request_url}) do |c|
@@ -50,7 +50,7 @@ describe RedirectIfPublisher do
       mock_http_requests(server)
       expect(http_requester)
         .to receive(:call)
-        .with(request_url)
+        .with(request_url, default_test_request_headers)
         .and_return mock_http_response(200, url_html)
 
       get_request(query: {url: request_url}) do |c|

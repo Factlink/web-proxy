@@ -16,4 +16,4 @@ end
   config[var] = ENV[var.to_s] if ENV.key? var.to_s
 end
 
-config[:http_requester] = ->(url) { EM::HttpRequest.new(url).get }
+config[:http_requester] = ->(url, headers) { EM::HttpRequest.new(url).get(head: headers || {}) }
