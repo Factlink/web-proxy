@@ -7,6 +7,7 @@ describe UrlValidator do
       validator = UrlValidator.new(nil)
       expect(validator.valid?).to be_falsey
     end
+
     it "is false when url is invalid" do
       validator = UrlValidator.new("10://henk/")
       expect(validator.valid?).to be_falsey
