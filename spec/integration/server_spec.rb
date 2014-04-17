@@ -41,7 +41,7 @@ describe Server do
       mock_http_requests(server)
 
       get_request(query: {url: request_url}) do |c|
-        Approvals.verify(c.response, name: 'server_200')
+        Approvals.verify(c.response, name: 'blocked_site')
       end
     end
   end
