@@ -7,6 +7,7 @@ describe UrlValidator do
       validator = UrlValidator.new(nil)
       expect(validator.valid?).to be_falsey
     end
+
     it "is false when url is invalid" do
       validator = UrlValidator.new("10://henk/")
       expect(validator.valid?).to be_falsey
@@ -87,6 +88,23 @@ describe UrlValidator do
     it "is false for ipv6" do
       validator = UrlValidator.new("http://3ffe:1900:4545:3:200:f8ff:fe21:67cf/foo?bar=baz")
       expect(validator.valid?).to be_falsey
+    end
+  end
+
+  describe "#blocked?" do
+    it "medium.com is blocked" do
+      validator = UrlValidator.new("https://medium.com/bla")
+      expect(validator.blocked?).to eq true
+    end
+
+    it "medium.com subdomains are blocked" do
+      validator = UrlValidator.new("http://foobar.medium.com/simple?truth=false")
+      expect(validator.blocked?).to eq true
+    end
+
+    it "arbitrary examples (example.org) are not blocked" do
+      validator = UrlValidator.new("http://example.org/xyz")
+      expect(validator.blocked?).to eq false
     end
   end
 

@@ -27,6 +27,19 @@ describe Server do
     end
   end
 
+  it "does not proxy medium.com" do
+    request_url = 'http://medium.com/foo?bar=baz'
+
+    with_api(Server) do |server|
+      mock_http_requests(server)
+
+      get_request(query: {url: request_url}) do |c|
+        Approvals.verify(c.response, name: 'blocked_site')
+      end
+    end
+  end
+
+
   it "redirects you when it was redirected" do
     request_url = 'http://www.example.org/foo?bar=baz'
 
