@@ -52,7 +52,7 @@ class WebProxy < Goliath::API
     [
       203,
       {"X-Proxied-Location" => requested_url},
-      """<!DOCTYPE html><title>Content blocked</title><p style='font:200% sans-serif ;text-align:center;margin:3em 2em;color:#666'>The content of this site has been blocked at request of the site owner.</p>"""
+      "<!DOCTYPE html><title>Content blocked</title><p style='font:200% sans-serif ;text-align:center;margin:3em 2em;color:#666'>The content of this site has been blocked at request of the site owner.</p>"
     ]
   end
 
