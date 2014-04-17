@@ -13,6 +13,8 @@ class WebProxy < Goliath::API
     url_validator = UrlValidator.new(requested_url)
     if !url_validator.valid?
       invalid_request
+    elsif url_validator.blocked?
+      respond_by_placeholder(env, url_validator.normalized)
     else
       respond_by_proxy(env, url_validator.normalized)
     end
@@ -44,6 +46,14 @@ class WebProxy < Goliath::API
     else
       fail "unknown status #{page.response_header.status}"
     end
+  end
+
+  def respond_by_placeholder(env, requested_url)
+    [
+      203,
+      {"X-Proxied-Location" => requested_url},
+      """<!DOCTYPE html><title>Content blocked</title><p style='font:200% sans-serif ;text-align:center;margin:3em 2em;color:#666'>The content of this site has been blocked at request of the site owner.</p>"""
+    ]
   end
 
   def set_base(requested_url, html)
