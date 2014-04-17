@@ -11,12 +11,14 @@ class WebProxy < Goliath::API
     end
 
     url_validator = UrlValidator.new(requested_url)
-    if url_validator.valid?
-      requested_url = url_validator.normalized
+    if !url_validator.valid?
+      invalid_request
     else
-      return invalid_request
+      respond_by_proxy(env, url_validator.normalized)
     end
+  end
 
+  def respond_by_proxy(env, requested_url)
     page = retrieve_page(env, requested_url)
 
     case page.response_header.status
