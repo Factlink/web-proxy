@@ -30,13 +30,6 @@ describe Server do
   it "does not proxy medium.com" do
     request_url = 'http://medium.com/foo?bar=baz'
 
-    url_html = <<-EOHTML.squeeze(' ').gsub(/^ /,'')
-      <!DOCTYPE html>
-      <html>
-      <title>Hoi</title>
-      <h1>yo</h1>
-    EOHTML
-
     with_api(Server) do |server|
       mock_http_requests(server)
 
