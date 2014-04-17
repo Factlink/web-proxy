@@ -25,6 +25,14 @@ class UrlValidator
     @url.normalize.to_s
   end
 
+  BLOCKED_HOSTNAME = /
+    medium\.com$
+    /ix
+
+  def blocked?
+    !!BLOCKED_HOSTNAME.match(@url.host)
+  end
+
   private
 
   # contains all private ranges as described on:
