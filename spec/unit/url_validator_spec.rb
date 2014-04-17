@@ -90,6 +90,23 @@ describe UrlValidator do
     end
   end
 
+  describe "#blocked?" do
+    it "medium.com is blocked" do
+      validator = UrlValidator.new("https://medium.com/bla")
+      expect(validator.blocked?).to eq true
+    end
+
+    it "medium.com subdomains are blocked" do
+      validator = UrlValidator.new("http://foobar.medium.com/simple?truth=false")
+      expect(validator.blocked?).to eq true
+    end
+
+    it "arbitrary examples (example.org) are not blocked" do
+      validator = UrlValidator.new("http://example.org/xyz")
+      expect(validator.blocked?).to eq false
+    end
+  end
+
   describe "#normalized" do
     it "strips port 80 for http" do
       validator = UrlValidator.new("http://example.org:80/foo?bar=baz")
