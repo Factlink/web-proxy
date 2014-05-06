@@ -6,6 +6,7 @@ class AddFactlinkToPage
     if (200..299).cover? status
       scripts =
         factlink_proxied_url_js_var(headers['X-Proxied-Location']) +
+        factlink_api_base_uri_js_var(env) +
         factlink_publisher_script(env)
 
       body = HtmlEditor.prepend_to_head(body, scripts)
@@ -17,6 +18,13 @@ class AddFactlinkToPage
     jsonified_location = location.gsub(/</, '%3C').gsub(/>/, '%3E').to_json
 
     "<script>window.FactlinkProxiedUri = #{jsonified_location};</script>"
+  end
+
+  def factlink_api_base_uri_js_var env
+    api_base_uri = env.config[:api_base_uri]
+    return "" unless api_base_uri
+
+    "<script>window.FactlinkApiBaseUri = '#{api_base_uri}';</script>"
   end
 
   def factlink_publisher_script env

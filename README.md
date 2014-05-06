@@ -14,6 +14,7 @@ The current deploy process is using Dokku. After pushing the app, some configura
 dokku config:set proxy-production redirect_for_no_url='https://factlink.com' \
   hostname='fct.li' \
   host='http://fct.li' \
+  api_base_uri='https://factlink.com' \
   jslib_uri='https://static.factlink.com/lib/dist/factlink_loader.min.js?o=proxy' \
   APPSIGNAL_PUSH_API_KEY='...'
 ```

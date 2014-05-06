@@ -7,6 +7,7 @@ environment :development do
   config[:hostname] = 'localhost'
   config[:host] = 'http://localhost:8080'
   config[:jslib_uri] = 'http://localhost:8000/lib/dist/factlink_loader.js?o=proxy'
+  config[:api_base_uri] = 'http://localhost:3000'
 
   $stdout.sync = true
   $stderr.sync = true
