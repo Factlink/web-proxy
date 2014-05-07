@@ -13,7 +13,7 @@ environment :development do
   $stderr.sync = true
 end
 
-[:redirect_for_no_url, :hostname, :host, :jslib_uri].each do |var|
+[:redirect_for_no_url, :hostname, :host, :jslib_uri, :api_base_uri].each do |var|
   config[var] = ENV[var.to_s] if ENV.key? var.to_s
 end
 
