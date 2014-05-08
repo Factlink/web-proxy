@@ -6,7 +6,7 @@ environment :development do
   config[:redirect_for_no_url] = 'http://localhost:3000/'
   config[:hostname] = 'localhost'
   config[:host] = 'http://localhost:8080'
-  config[:jslib_uri] = 'http://localhost:8000/lib/dist/factlink_loader.js?o=proxy'
+  config[:jslib_uri] = 'http://localhost:8000/factlink_loader.js' # served by js-library repo, "grunt server"
   config[:api_base_uri] = 'http://localhost:3000'
 
   $stdout.sync = true
