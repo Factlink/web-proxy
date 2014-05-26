@@ -12,3 +12,4 @@ gem 'rspec', '~> 3.0.0.beta2'
 gem 'simplecov', '~> 0.7.1'
 gem 'hashie'
 gem 'appsignal'
+gem "codeclimate-test-reporter", group: :test, require: nil
