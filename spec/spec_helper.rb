@@ -4,6 +4,9 @@ Bundler.setup
 require 'simplecov'
 SimpleCov.start
 
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 require 'goliath/test_helper'
 require 'approvals'
 require 'hashie'
