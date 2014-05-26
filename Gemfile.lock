@@ -108,4 +108,3 @@ DEPENDENCIES
   hashie
   rake
   rspec (~> 3.0.0.beta2)
-  simplecov

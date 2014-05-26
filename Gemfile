@@ -9,7 +9,6 @@ gem 'em-http-request'
 gem 'addressable'
 gem 'approvals', github: 'kytrinyx/approvals'
 gem 'rspec', '~> 3.0.0.beta2'
-gem 'simplecov'
 gem 'hashie'
 gem 'appsignal'
 gem "codeclimate-test-reporter", group: :test, require: nil
