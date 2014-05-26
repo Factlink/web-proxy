@@ -1,4 +1,4 @@
-# Factlink Web Proxy [![Code Climate](https://codeclimate.com/github/Factlink/web-proxy.png)](https://codeclimate.com/github/Factlink/web-proxy) [![Build Status](https://circleci.com/gh/Factlink/web-proxy.png?circle-token=ce5f5cf4d71efa755316eb6f33f8a547839ca9d7)](https://circleci.com/gh/Factlink/web-proxy)
+# Factlink Web Proxy [![Code Climate](https://codeclimate.com/github/Factlink/web-proxy.png)](https://codeclimate.com/github/Factlink/web-proxy) [![Build Status](https://circleci.com/gh/Factlink/web-proxy.png?circle-token=ce5f5cf4d71efa755316eb6f33f8a547839ca9d7)](https://circleci.com/gh/Factlink/web-proxy) [![Dependency Status](https://gemnasium.com/Factlink/web-proxy.svg)](https://gemnasium.com/Factlink/web-proxy)
 
 Simple proxy which allows you to load any page on the internet, and inject the Factlink Javascript Library, to be able to share links comments on sites without Factlink enabled.
 
@@ -25,5 +25,4 @@ Currently this is very much a Factlink product. We recognize this would be inter
 
 ## License
 
-Copyright (c) 2014 Factlink Inc and individual contributers, MIT license
-
+Copyright (c) 2014 Factlink Inc. and individual contributors. Licensed under MIT license, see [LICENSE.txt](LICENSE.txt) for the full license.
