@@ -25,5 +25,4 @@ Currently this is very much a Factlink product. We recognize this would be inter
 
 ## License
 
-Copyright (c) 2014 Factlink Inc and individual contributers, MIT license
-
+Copyright (c) 2014 Factlink Inc. and individual contributors. Licensed under MIT license, see [LICENSE.txt](LICENSE.txt) for the full license.
