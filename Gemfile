@@ -13,3 +13,4 @@ gem 'simplecov', '~> 0.7.1'
 gem 'hashie'
 gem 'appsignal'
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'rake'
