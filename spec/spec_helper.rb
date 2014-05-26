@@ -4,6 +4,7 @@ Bundler.setup
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 
+require 'goliath'
 require 'goliath/test_helper'
 require 'approvals'
 require 'hashie'
