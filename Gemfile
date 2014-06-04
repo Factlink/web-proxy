@@ -7,7 +7,7 @@ gem "eventmachine"
 gem 'em-synchrony'
 gem 'em-http-request'
 gem 'addressable'
-gem 'approvals', github: 'kytrinyx/approvals'
+gem 'approvals'
 gem 'rspec', '~> 3.0.0.beta2'
 gem 'hashie'
 gem 'appsignal'
