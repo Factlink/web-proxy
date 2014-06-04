@@ -27,7 +27,10 @@ class WebProxy < Goliath::API
     when 200..299, 400..599
       [
         page.response_header.status,
-        {"X-Proxied-Location" => requested_url},
+        {
+          "X-Proxied-Location" => requested_url,
+          "Content-Type" => page.response_header['Content-Type']
+        },
         set_base(requested_url, page.response)
       ]
     when 300..399
