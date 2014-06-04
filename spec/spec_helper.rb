@@ -12,8 +12,8 @@ require_relative './helper_methods'
 Goliath.env = :test
 
 RSpec.configure do |c|
-  c.include Goliath::TestHelper, example_group: {
+  c.include Goliath::TestHelper,
     file_path: /spec\/integration/
-  }
+
   c.include HelperMethods
 end
