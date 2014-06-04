@@ -39,6 +39,25 @@ describe Server do
     end
   end
 
+  it "serves back a page with the same Content-Type" do
+    request_url = 'http://www.example.org/foo?bar=baz'
+
+    with_api(Server) do |server|
+      mock_http_requests(server)
+      expect(http_requester)
+        .to receive(:call)
+        .with(request_url, default_test_request_headers)
+        .and_return mock_http_response(200, 'I am plain text', headers: {
+          'Content-Type' => 'text/plain'
+        })
+
+      get_request(query: {url: request_url}) do |c|
+        expect(c.response_header.status).to eq 200
+        expect(c.response_header['Content-Type'])
+          .to eq 'text/plain'
+      end
+    end
+  end
 
   it "redirects you when it was redirected" do
     request_url = 'http://www.example.org/foo?bar=baz'
