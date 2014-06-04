@@ -39,7 +39,7 @@ describe Server do
     end
   end
 
-  it "serves back a page with the same Content-Type" do
+  it "serves back a page with the same Content-Type and Content-Disposition" do
     request_url = 'http://www.example.org/foo?bar=baz'
 
     with_api(Server) do |server|
@@ -48,13 +48,16 @@ describe Server do
         .to receive(:call)
         .with(request_url, default_test_request_headers)
         .and_return mock_http_response(200, 'I am plain text', headers: {
-          'Content-Type' => 'text/plain'
+          'Content-Type' => 'text/plain',
+          'Content-Disposition' => 'attachment; filename="file.txt"; filename*=UTF-8''file.txt'
         })
 
       get_request(query: {url: request_url}) do |c|
         expect(c.response_header.status).to eq 200
         expect(c.response_header['Content-Type'])
           .to eq 'text/plain'
+        expect(c.response_header['Content-Disposition'])
+          .to eq 'attachment; filename="file.txt"; filename*=UTF-8''file.txt'
       end
     end
   end
