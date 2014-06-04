@@ -2,7 +2,7 @@ source "http://rubygems.org/"
 
 ruby '2.1.0'
 
-gem "goliath"
+gem "goliath", github: 'postrank-labs/goliath'
 gem "eventmachine"
 gem 'em-synchrony'
 gem 'em-http-request'
