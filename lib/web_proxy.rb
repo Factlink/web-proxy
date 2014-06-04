@@ -25,12 +25,15 @@ class WebProxy < Goliath::API
 
     case page.response_header.status
     when 200..299, 400..599
+      headers = { "X-Proxied-Location" => requested_url }
+      ['Content-Type', 'Content-Disposition'].each do |name|
+        if page.response_header[name]
+          headers[name] = page.response_header[name]
+        end
+      end
       [
         page.response_header.status,
-        {
-          "X-Proxied-Location" => requested_url,
-          "Content-Type" => page.response_header['Content-Type']
-        },
+        headers,
         set_base(requested_url, page.response)
       ]
     when 300..399
