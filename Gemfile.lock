@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/kytrinyx/approvals.git
-  revision: 674cf6461c2dfeaaa6902c11db1549711008691e
-  specs:
-    approvals (0.0.16)
-      nokogiri (~> 1.6)
-      thor (~> 0.18)
-
-GIT
   remote: git://github.com/postrank-labs/goliath.git
   revision: f8acf8fc988f0cf5a98057d5cb5bc206b438fb1f
   specs:
@@ -32,6 +24,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    approvals (0.0.16)
+      nokogiri (~> 1.6)
+      thor (~> 0.18)
     appsignal (0.8.14)
       activesupport (>= 3.0)
       rack
@@ -101,7 +96,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
-  approvals!
+  approvals
   appsignal
   codeclimate-test-reporter
   em-http-request
