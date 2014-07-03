@@ -46,7 +46,7 @@ class WebProxy < Goliath::API
     when 0
       [
         504,
-        {},
+        { 'Content-Type' => 'text/plain'},
         "This page is taking unusually long to load. You can try visiting the site without Factlink: <a href='#{requested_url}'>#{requested_url}</a>"
       ]
     else

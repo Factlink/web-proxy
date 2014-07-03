@@ -62,7 +62,10 @@ class UrlValidator
   ])
 
   def valid_hostname?
-    not LOCAL_HOSTNAMES.match(@url.host)
+    return false if @url.host.match(/ /)
+    return false if LOCAL_HOSTNAMES.match(@url.host)
+
+    true
   end
 
   def parse(url)
