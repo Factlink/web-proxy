@@ -23,6 +23,11 @@ describe UrlValidator do
       expect(validator.valid?).to be_truthy
     end
 
+    it "is false when it contains spaces" do
+      validator = UrlValidator.new("http://exam ple.org/foo?bar=baz")
+      expect(validator.valid?).to be_falsey
+    end
+
     it "is true when url is a regular https url" do
       validator = UrlValidator.new("https://example.org/foo?bar=baz")
       expect(validator.valid?).to be_truthy
