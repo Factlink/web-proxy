@@ -1,6 +1,6 @@
 source "http://rubygems.org/"
 
-ruby '2.1.2'
+ruby '2.1.5'
 
 gem "goliath", github: 'postrank-labs/goliath'
 gem "eventmachine"
